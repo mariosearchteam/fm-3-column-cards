@@ -1,0 +1,157 @@
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Lexend+Deca&display=swap");
+
+/* variables */
+
+:root {
+  /* colors */
+  --clr-orange: hsl(31, 77%, 52%);
+  --clr-cyan: hsl(184, 100%, 22%);
+  --clr-dark-cyan: hsl(179, 100%, 13%);
+  --clr-transparent-white: hsla(0, 0%, 100%, 0.75);
+  --clr-neutral-200: hsl(0, 0%, 95%);
+  /* fonts */
+  --font-body: "Lexend Deca", sans-serif;
+  --font-heading: "Big Shoulders Display", cursive;
+  /* font sizes */
+  --font-size-body: 15px;
+  /* spacing */
+  --spacer: 1rem;
+  --spacer-sm: 0.75rem;
+  --spacer-md: 2rem;
+  --spacer-lg: 3rem;
+
+  --br: 0.5rem;
+}
+
+/* reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4 {
+  line-height: 1.2;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+body {
+  line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  color: var(--clr-transparent-white);
+  background: var(--clr-neutral-200);
+}
+
+/* Utility classes */
+/* Default is --spacer, can be overwritten with --flow-space */
+.flow-content > * + * {
+  margin-top: var(--flow-space, var(--spacer-md));
+}
+
+.split {
+  display: flex;
+}
+
+/* general styles */
+
+main {
+  padding: var(--spacer);
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+/* cards */
+
+.cards {
+  display: grid;
+}
+.card {
+  padding: var(--spacer-lg);
+  background: var(--clr-accent, lightgray);
+
+  &__one {
+    border-radius: var(--br) var(--br) 0 0;
+    --clr-accent: var(--clr-orange);
+  }
+  &__two {
+    --clr-accent: var(--clr-cyan);
+  }
+  &__three {
+    border-radius: 0 0 var(--br) var(--br);
+    --clr-accent: var(--clr-dark-cyan);
+  }
+  & h2 {
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    color: var(--clr-neutral-200);
+  }
+  &__button {
+    padding: var(--spacer-sm) var(--spacer-md);
+    border-radius: var(--spacer-lg);
+    border: 2px solid var(--clr-neutral-200);
+    font-size: 1rem;
+    color: var(--clr-accent, #000);
+    cursor: pointer;
+    transition: background 0.3s, color 0.15s;
+    &:hover,
+    &:focus {
+      background: var(--clr-accent);
+      color: var(--clr-neutral-200);
+    }
+  }
+}
+
+/* media queries */
+@media screen and (min-width: 45rem) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: fit-content;
+    margin-inline: auto;
+  }
+  .card {
+    max-width: 19rem;
+    &__one {
+      border-radius: var(--br) 0 0 var(--br);
+    }
+    &__three {
+      border-radius: 0 var(--br) var(--br) 0;
+    }
+    &__button {
+      margin-top: var(--spacer-lg);
+    }
+  }
+}
